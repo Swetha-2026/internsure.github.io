@@ -3,60 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>InternSure — Internship Risk Checker</title>
-    
-    <!-- Stable Tailwind CSS CDN -->
+
+    <!-- Meta -->
+    <meta name="description" content="InternSure - Internship risk analysis and verification tool">
+    <meta name="theme-color" content="#03020a">
+
+    <!-- Tailwind Config -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Linked Custom CSS File -->
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="text-gray-200 min-h-screen flex flex-col justify-between overflow-x-hidden antialiased relative">
 
-    <!-- Glowing Background Setup -->
-    <div class="absolute inset-0 -z-10 overflow-hidden bg-[#03020a]">
+<body class="text-gray-200 min-h-screen flex flex-col justify-between overflow-x-hidden antialiased relative bg-[#03020a]">
+
+    <!-- Background Glow -->
+    <div class="absolute inset-0 -z-10 overflow-hidden">
         <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-600/15 blur-[120px] animate-pulse"></div>
         <div class="absolute bottom-[10%] right-[-10%] w-[60%] h-[60%] rounded-full bg-blue-600/10 blur-[150px] animate-pulse"></div>
     </div>
 
-    <!-- Header Navbar -->
-    <header class="bg-[#03020a]/40 backdrop-blur-md border-b border-white/5 w-full fixed top-0 left-0 z-50">
+    <!-- HEADER -->
+    <header class="bg-[#03020a]/60 backdrop-blur-md border-b border-white/5 w-full fixed top-0 left-0 z-50">
         <div class="max-w-xl mx-auto px-6 h-16 flex items-center justify-between">
+
+            <!-- Logo -->
             <div class="flex items-center space-x-2.5">
                 <div class="p-1.5 bg-indigo-500/10 border border-indigo-500/20 rounded-lg">
                     <svg class="w-5 h-5 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
                     </svg>
                 </div>
-                <span class="text-base font-extrabold text-white tracking-tight">InternSure</span>
+                <span class="text-base font-extrabold text-white">InternSure</span>
             </div>
-            <div id="progress-container" class="hidden items-center space-x-3">
+
+            <!-- Progress -->
+            <div id="progress-container" class="flex items-center space-x-3 hidden">
                 <div class="w-24 bg-white/5 h-1.5 rounded-full overflow-hidden border border-white/5">
-                    <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 to-blue-500 h-full transition-all duration-300 w-0"></div>
+                    <div id="progress-bar"
+                         class="bg-gradient-to-r from-indigo-500 to-blue-500 h-full transition-all duration-300 w-0"></div>
                 </div>
-                <span id="page-progress" class="text-[11px] text-gray-400 font-bold tracking-wider uppercase">Step 1/11</span>
+                <span id="page-progress"
+                      class="text-[11px] text-gray-400 font-bold tracking-wider uppercase">
+                    Step 1/11
+                </span>
             </div>
+
         </div>
     </header>
 
-    <!-- App Dynamic Content Injection Portal -->
-    <main class="flex-grow flex items-center justify-center px-4 pt-28 pb-12 w-full max-w-xl mx-auto">
-        <div id="wizard-render-engine" class="w-full">
-            <!-- Content will inject here -->
+    <!-- MAIN WIZARD -->
+    <main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12 w-full max-w-xl mx-auto min-h-screen">
+
+        <div id="wizard-render-engine"
+             class="w-full transition-all duration-500 ease-in-out">
+
+            <!-- Default Start Screen -->
+            <div class="text-center space-y-5">
+                <h1 class="text-3xl font-bold text-white">InternSure</h1>
+                <p class="text-gray-400 text-sm">
+                    Internship Risk Checker — Verify offers safely before you join.
+                </p>
+
+                <button onclick="startWizard()"
+                        class="mt-4 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 transition font-semibold">
+                    Start Analysis
+                </button>
+            </div>
+
         </div>
     </main>
 
-    <!-- Footnote Block -->
-    <footer class="w-full py-4 text-center border-t border-white/5 text-[10px] text-gray-500 tracking-wide bg-[#03020a]/60 backdrop-blur-md">
+    <!-- FOOTER -->
+    <footer class="w-full py-4 text-center border-t border-white/5 text-[10px] text-gray-500 bg-[#03020a]/60 backdrop-blur-md">
         InternSure is an anonymous safety analyzer. Always verify your offers with institutional coordinators.
     </footer>
 
-    <!-- Linked Custom JS File -->
+    <!-- JS -->
     <script src="script.js"></script>
+
 </body>
 </html>
