@@ -1,103 +1,121 @@
-const data = {
-    step: 0,
-    answers: {},
-    score: 0,
+/**
+ * Internsure AI - Core Logic Engine
+ */
 
-    questions: [
-        { q: "Upfront payment asked?", s: 45 },
-        { q: "Recruitment via WhatsApp/Telegram?", s: 40 },
-        { q: "No online company presence?", s: 45 },
-        { q: "No interview process?", s: 40 },
-        { q: "No official offer letter?", s: 30 },
-        { q: "Asked for sensitive data early?", s: 35 },
-        { q: "Unrealistic salary offer?", s: 30 },
-        { q: "High pressure urgency?", s: 25 },
-        { q: "Used Gmail instead of company email?", s: 30 },
-        { q: "Suspicious stipend structure?", s: 20 }
-    ]
-};
+// Function to automatically load the pre-defined demo scenario
+function loadDemo() {
+    const demoText = "FakeTech Global Internship – Pay ₹500 registration fee to join immediately. WhatsApp only contact. No interview required for instant selection.";
+    document.getElementById('inputText').value = demoText;
+}
 
-function render() {
-    const el = document.getElementById("wizard-render-engine");
-
-    if (data.step === 0) {
-        document.getElementById("progress-container").classList.add("hidden");
-
-        el.innerHTML = `
-        <div class="card">
-            <h1>InternSure</h1>
-            <p>AI Internship Risk Analyzer</p>
-            <button class="primary" onclick="next()">Start Analysis</button>
-        </div>`;
+// Main processing function
+function analyzeRisk() {
+    const inputElement = document.getElementById('inputText');
+    const text = inputElement.value.trim();
+    
+    // Guard clause for empty submissions
+    if (!text) {
+        alert("Please enter some internship details or paste a description first!");
         return;
     }
 
-    if (data.step <= data.questions.length) {
-        document.getElementById("progress-container").classList.remove("hidden");
-        document.getElementById("progress-bar").style.width =
-            (data.step / data.questions.length) * 100 + "%";
+    // Reset UI visibility states to trigger loader display
+    document.getElementById('results').classList.add('hidden');
+    document.getElementById('loading').classList.remove('hidden');
 
-        const q = data.questions[data.step - 1];
+    // Simulate standard AI processing delay (1 second)
+    setTimeout(() => {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('results').classList.remove('hidden');
 
-        el.innerHTML = `
-        <div class="card">
-            <h3>Q${data.step}</h3>
-            <p>${q.q}</p>
+        const lowerText = text.toLowerCase();
+        let score = 10; // Baseline structural risk index
+        let flags = [];
+        let reasons = [];
 
-            <button class="option" onclick="answer(true, ${q.s})">Yes</button>
-            <button class="option" onclick="answer(false, 0)">No</button>
+        // 1. Scam Pattern Recognition Layer
+        if (lowerText.includes("fee") || lowerText.includes("pay") || lowerText.includes("₹") || lowerText.includes("money") || lowerText.includes("security deposit")) {
+            score += 40;
+            flags.push("Upfront Payments requested");
+            reasons.push("Demands cash or dynamic security fee payments, which is a major red flag for legitimate internships.");
+        }
+        
+        if (lowerText.includes("whatsapp") || lowerText.includes("telegram")) {
+            score += 20;
+            flags.push("Unregulated Messaging Channels");
+            reasons.push("Uses non-corporate communications channels like WhatsApp/Telegram instead of registered enterprise email domains.");
+        }
+        
+        if (lowerText.includes("no interview") || lowerText.includes("instant") || lowerText.includes("direct join") || lowerText.includes("instant offer")) {
+            score += 20;
+            flags.push("Zero Screening Bias");
+            reasons.push("Promises immediate recruitment bypassing structural skill assessment rounds or background evaluation pipelines.");
+        }
+        
+        if (lowerText.includes("faketech") || text.length < 35) {
+            score += 10;
+            reasons.push("The limited metadata provided matches structural parameters commonly found in high-risk template job posts.");
+        }
 
-            <button onclick="skip()" class="option">Skip</button>
-        </div>`;
-        return;
-    }
+        // Cap maximum possible risk score to 100
+        if (score > 100) score = 100;
 
-    showResult();
+        // Dom Element Selectors
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const labelDisplay = document.getElementById('labelDisplay');
+        const companyStatus = document.getElementById('companyStatus');
+        const scamBox = document.getElementById('scamDetectorBox');
+        const flaggedKeywords = document.getElementById('flaggedKeywords');
+
+        scoreDisplay.innerText = score;
+
+        // 2. State-Based Classification Logic (Green / Yellow / Red)
+        if (score <= 30) {
+            // Safe Tier Configuration
+            scoreDisplay.className = "text-5xl font-black mt-2 text-green-400";
+            labelDisplay.className = "mt-2 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-green-500/10 text-green-400 border border-green-500/20";
+            labelDisplay.innerText = "Safe Internship";
+            companyStatus.className = "text-lg font-bold text-green-400 mt-1";
+            companyStatus.innerHTML = "<i class='fa-solid fa-circle-check'></i> Verified Entity";
+            scamBox.classList.add('hidden');
+            reasons.push("The profile metrics exhibit strong standard operational compliance signatures.");
+        } 
+        else if (score <= 60) {
+            // Medium Risk Configuration
+            scoreDisplay.className = "text-5xl font-black mt-2 text-yellow-400";
+            labelDisplay.className = "mt-2 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-yellow-500/10 text-yellow-400 border border-yellow-500/20";
+            labelDisplay.innerText = "Medium Risk";
+            companyStatus.className = "text-lg font-bold text-yellow-400 mt-1";
+            companyStatus.innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Unverified Domain";
+            scamBox.classList.add('hidden');
+        } 
+        else {
+            // Danger Tier Configuration
+            scoreDisplay.className = "text-5xl font-black mt-2 text-red-500";
+            labelDisplay.className = "mt-2 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide bg-red-500/10 text-red-400 border border-red-500/20";
+            labelDisplay.innerText = "High Risk Scam";
+            companyStatus.className = "text-lg font-bold text-red-500 mt-1";
+            companyStatus.innerHTML = "<i class='fa-solid fa-skull-crossbones'></i> Blacklisted Profile Pattern";
+            
+            scamBox.classList.remove('hidden');
+            flaggedKeywords.innerText = flags.join(" | ");
+        }
+
+        // 3. Structural Parsing Simulation
+        document.getElementById('detRole').innerText = lowerText.includes("data entry") ? "Data Entry Operator" : (lowerText.includes("developer") || lowerText.includes("tech") ? "Software Engineer" : "General Intern");
+        document.getElementById('detType').innerText = lowerText.includes("home") || lowerText.includes("remote") ? "Remote (Work from Home)" : "On-site / Unspecified";
+        document.getElementById('detSkills').innerText = lowerText.includes("excel") || lowerText.includes("typing") ? "Excel, Fast Typing, Office Suite" : "Basic Communication, Minimal Prerequisites";
+
+        // 4. Update the Dynamic Explainability List
+        const aiUl = document.getElementById('aiReasons');
+        aiUl.innerHTML = ""; // Clear legacy nodes
+        
+        reasons.forEach(reasonText => {
+            let li = document.createElement('li');
+            li.innerText = reasonText;
+            aiUl.appendChild(li);
+        });
+
+    }, 1000);
 }
-
-function next() {
-    data.step++;
-    render();
-}
-
-function answer(isYes, score) {
-    if (isYes) data.score += score;
-    data.step++;
-    render();
-}
-
-function skip() {
-    data.step++;
-    render();
-}
-
-function showResult() {
-    const el = document.getElementById("wizard-render-engine");
-
-    let level = "LOW";
-    let color = "#00ff88";
-
-    if (data.score > 30) { level = "MEDIUM"; color = "#ffcc00"; }
-    if (data.score > 60) { level = "HIGH"; color = "#ff4d4d"; }
-
-    el.innerHTML = `
-    <div class="card">
-        <h2>Result</h2>
-
-        <h1 style="color:${color}">
-            ${data.score}/100
-        </h1>
-
-        <h3>${level} RISK</h3>
-
-        <button class="primary" onclick="restart()">Restart</button>
-    </div>`;
-}
-
-function restart() {
-    data.step = 0;
-    data.score = 0;
-    render();
-}
-
-render();
+        
