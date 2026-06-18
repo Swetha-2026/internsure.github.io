@@ -1,37 +1,65 @@
-/* Premium double-shaded black and deep blue background layout */
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: radial-gradient(circle at 50% 30%, #120e3a 0%, #03020a 85%);
-    background-color: #03020a;
 }
 
-/* Glassmorphism panel cards */
+/* Glassmorphic Panel Cards with a fine metallic outline */
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Interactive Pill state active toggles */
-.pill-checkbox:checked + .pill-label {
-    background: linear-gradient(90deg, #6366f1 0%, #3b82f6 100%);
-    border-color: rgba(255, 255, 255, 0.2);
-    color: #ffffff;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+/* Option Pill Items styling */
+.pill-option {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Page Transition States */
-.dynamic-screen {
-    animation: fadeInPage 0.35s ease-in-out forwards;
+.pill-option:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-@keyframes fadeInPage {
+/* Ultra Attractive Glowing Glow CTA Button Effects */
+.glow-btn {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 0 0 rgba(6, 182, 212, 0);
+}
+
+.glow-btn:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(6, 182, 212, 0.35);
+}
+
+.glow-btn:active {
+    transform: translateY(-1px) scale(0.99);
+}
+
+/* Slow Ambient Pulse Animations for background graphics */
+.animate-pulse-slow {
+    animation: slowPulse 8s infinite alternate ease-in-out;
+}
+
+@keyframes slowPulse {
+    0% { transform: scale(1) translate(0px, 0px); opacity: 0.7; }
+    100% { transform: scale(1.15) translate(20px, -10px); opacity: 1; }
+}
+
+/* Component Reveal State Transitions */
+.screen-fade-in {
+    animation: screenReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes screenReveal {
     from {
         opacity: 0;
-        transform: translateY(8px);
+        transform: scale(0.96) translateY(12px);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1) translateY(0);
     }
 }
