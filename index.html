@@ -18,6 +18,7 @@
                 <a href="#home">Home</a>
                 <a href="#about">About System</a>
                 <a href="#assessment">Risk Engine</a>
+                <a href="#tips">Safe Tips</a>
                 <a href="#disclaimer">Disclaimer</a>
             </nav>
         </div>
@@ -83,6 +84,30 @@
 
             <form id="quiz-form" class="quiz-form">
                 
+                <div class="input-details-group">
+                    <div class="form-group-text">
+                        <label for="company-name">Company Name <span class="required">*</span></label>
+                        <input type="text" id="company-name" placeholder="e.g., Acme Corp" required>
+                    </div>
+
+                    <div class="form-group-text">
+                        <label for="intern-role">Internship Role</label>
+                        <input type="text" id="intern-role" placeholder="e.g., Web Development Intern">
+                    </div>
+
+                    <div class="form-group-text">
+                        <label for="company-url">Company Website / LinkedIn Profile URL</label>
+                        <input type="url" id="company-url" placeholder="e.g., https://linkedin.com/company/example">
+                    </div>
+
+                    <div class="form-group-text">
+                        <label for="offer-desc">Internship Offer Description / Details <span class="required">*</span></label>
+                        <textarea id="offer-desc" rows="5" placeholder="Paste the job description, communications, or offer letter text details here..." required></textarea>
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+
                 <div class="form-group">
                     <label>1. Initial Contact Method / Communication Channel</label>
                     <div class="radio-options">
@@ -188,7 +213,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn btn-primary submit-btn">Compute Heuristic Diagnostics</button>
+                <button type="submit" class="btn btn-primary submit-btn">Analyze Now</button>
             </form>
         </div>
     </section>
@@ -200,23 +225,79 @@
                 <h2>Calculated Risk Analysis Profile</h2>
             </div>
 
-            <div class="result-card">
-                <div class="score-display">
-                    <div class="score-circle">
-                        <span id="score-num">0%</span>
-                        <div class="score-sub">Anomaly Index</div>
+            <div class="result-grid-layout">
+                <div class="result-card main-assessment-card">
+                    <div class="score-display">
+                        <div class="score-circle">
+                            <span id="score-num">0%</span>
+                            <div class="score-sub">Anomaly Index</div>
+                        </div>
+                        <div class="score-info">
+                            <h3 id="risk-level">—</h3>
+                            <p id="risk-desc"></p>
+                        </div>
                     </div>
-                    <div class="score-info">
-                        <h3 id="risk-level">—</h3>
-                        <p id="risk-desc"></p>
+
+                    <div class="report-details">
+                        <div class="explanation-box">
+                            <h3>Analysis Explanation</h3>
+                            <p id="ai-explanation-text">The verification parameters show structural anomalies based on the provided inputs. Review details below.</p>
+                        </div>
+                        <div class="flags-box">
+                            <h3>Anomalous Indicators Extracted</h3>
+                            <div id="red-flags-list"></div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="report-details">
-                    <div class="flags-box">
-                        <h3>Anomalous Indicators Extracted</h3>
-                        <div id="red-flags-list"></div>
-                    </div>
+                <div class="extra-info-card">
+                    <h3>Company Credibility Metrics</h3>
+                    <table class="metrics-table">
+                        <tr>
+                            <td><strong>Credibility Score</strong></td>
+                            <td><span id="metric-credibility-score" class="metric-val">100/100</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>LinkedIn Presence</strong></td>
+                            <td><span id="metric-linkedin" class="metric-val status-green">Checking...</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Website Validity</strong></td>
+                            <td><span id="metric-website" class="metric-val status-green">Checking...</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Red Flags Flagged</strong></td>
+                            <td><span id="metric-flags-count" class="metric-val status-red">0 Found</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tips" class="tips-section">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Education Hub</span>
+                <h2>How to Identify Fake Internships</h2>
+                <p>Protect your occupational timeline by adhering to verified standard verification criteria.</p>
+            </div>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>🚫 Red Flag Signals</h4>
+                    <ul>
+                        <li><strong>Upfront Fees:</strong> Legitimate operations never charge mandatory security fees, certificate issuances, or hardware deposits.</li>
+                        <li><strong>Generic Emails:</strong> Corporate correspondence routing through generic domains like `@gmail.com` or `@outlook.com`.</li>
+                        <li><strong>Instant Offer Letters:</strong> Hiring pathways issuing selection notifications immediately without an interview round.</li>
+                    </ul>
+                </div>
+                <div class="tip-card">
+                    <h4>🛡️ Safe Application Protocol</h4>
+                    <ul>
+                        <li>Cross-verify recruiters on LinkedIn directly within their official company structures.</li>
+                        <li>Research public reviews on independent portals such as Glassdoor or AmbitionBox.</li>
+                        <li>Avoid sharing sensitive ID cards or banking documents prior to official legally binding contracts.</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -225,8 +306,8 @@
     <section id="disclaimer" class="disclaimer-section">
         <div class="container">
             <div class="disclaimer-box">
-                <span class="warning-tag">Operational Legal Disclaimer</span>
-                <p>InternSure is a purely informational assessment infrastructure. This evaluation tool derives logic strictly from matching input patterns supplied by individual configuration records against common fraud architectures. This application does not structurally or officially track corporate legal logs, coordinate communication vectors with registered organizations, or validate explicit entity legitimacy. Computed scores do not represent authoritative legal, corporate employment clearance, or occupational advice. Users are fully responsible for executing extensive independent corporate investigation protocols before transmitting data payloads or executing fund transfers.</p>
+                <span class="warning-tag">⚠️ This is an AI Generated Analysis</span>
+                <p>InternSure is a purely informational assessment infrastructure. This evaluation tool derives logic strictly from matching input patterns supplied by individual configuration records against common fraud architectures. Always verify details manually and conduct extensive independent corporate investigation protocols before transmitting personal data payloads or executing fund transfers.</p>
             </div>
         </div>
     </section>
@@ -241,4 +322,5 @@
     <script src="script.js"></script>
 </body>
 </html>
-            
+                        
+        
