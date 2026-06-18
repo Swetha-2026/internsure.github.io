@@ -332,7 +332,6 @@ function renderOutputDashboard() {
         </div>
     `;
 }
-
 function resetCalculatorFramework() {
     assessmentData.companyName = "";
     assessmentData.internshipRole = "";
