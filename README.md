@@ -1,38 +1,78 @@
-# 🛡️ Internsure AI — Internship Risk & Verification System
+# 🧠 Internsure AI – Internship Verification & Risk Assessment System
 
-Internsure AI is a modern, high-fidelity SaaS web application designed to combat fraudulent online job listings. By utilizing client-side metadata parsing patterns, text-heuristic matrices, and keyword extraction signatures, the application evaluates fake job applications, scams, and predatory training offers instantly.
+Internsure AI is a modern, single-page web application designed to help students evaluate internship opportunities using a rule-based risk assessment engine.
 
-Built with a premium dark-mode aesthetic utilizing Tailwind CSS, this frontend application provides real-time risk calculations, structural role analysis, and educational breakdown flags.
-
----
-
-## 🚀 Key Features
-
-- **🧠 Core Internship Risk Scoring System:** Analyzes inputs to output a precise algorithmic security risk metric graded from 0 to 100 with strict multi-tier alerting color tracking (Safe, Medium Risk, High Risk).
-- **🔍 Scam Pattern Identification Matrix:** Actively captures signature trigger words (`registration fee`, `pay to join`, `WhatsApp group requirements`, `instant recruitment offers`) and isolates them inside unified hazard cards.
-- **⚙️ Structural Detail Analysis Pipeline:** Parses the submitted textual metadata string payload to dynamically decouple fields like underlying Role Types, Workplace Environments (Remote vs. On-site), and Skill requirements.
-- **💡 AI Explainability Feed:** Outputs human-readable contextual justifications highlighting the precise logic reasoning behind why specific profiles flag high vulnerability thresholds.
-- **📊 Interactive Simulation Widgets:** Built-in instant-load demo simulation triggers to let external code reviewers assess execution lifecycles immediately.
+Instead of labeling internships as “fake” or “real”, the system generates a **risk score (0–100)** based on structured validation parameters such as domain consistency, contact verification, and external presence signals.
 
 ---
 
-## 🛠️ Built With
-
-* **Frontend Architecture:** HTML5 (Semantic Structure)
-* **Styling & Theme Framework:** Tailwind CSS CDN (Fluid Responsive Tokens)
-* **Iconography Ecosystem:** FontAwesome v6 Vector Utilities
-* **Typography Suite:** Plus Jakarta Sans Google Fonts Pipeline
-* **Engine Core Execution:** Vanilla ECMAScript 6 Processing Engine
+## 🚀 Live Demo
+👉 GitHub Pages Link:  
+https://your-username.github.io/internsure-ai/
 
 ---
 
-## 📁 File Structure
+## 🎯 Objective
 
-For smooth portfolio modularization and clear repository architecture, the system is separated into clean, production-ready modules:
+The goal of this project is to:
+- Help students identify risky internship patterns
+- Promote awareness about internship scams
+- Provide a structured, transparent risk analysis system
 
-```text
-internsure-ai/
-│
-├── index.html       # Application Entry-Point & Structural DOM Nodes
-├── style.css        # Premium Typography Config & Presentation Layers
-└── script.js       # Real-time Evaluation Engine & UI State Management
+---
+
+## ✨ Key Features
+
+### 🎨 Modern UI/UX
+- Premium SaaS-style landing page
+- Dark theme with gradient background (blue/purple/black)
+- Responsive design for mobile, tablet, and desktop
+- Card-based layout with smooth spacing
+
+### 🧠 Heuristic Risk Engine
+- Rule-based scoring system (0–100)
+- No AI API required (pure JavaScript logic)
+- Instant evaluation based on input data
+
+### 📊 Animated Risk Meter
+- Dynamic circular progress indicator
+- Visual representation of risk score
+- Smooth animation transitions
+
+### ✍️ Typewriter Effect
+- Animated hero text for improved engagement
+- Explains system logic dynamically
+
+---
+
+## 📊 Score Logic System
+
+| Parameter | Weight | Description |
+|----------|--------|-------------|
+| Data Completeness | +10 | All required fields filled |
+| Website Presence | +25 | Valid company website provided |
+| Email Domain Match | +25 | Email domain matches website domain |
+| LinkedIn Presence | +20 | Company LinkedIn profile provided |
+| No Registration Fee | +20 | No upfront payment required |
+
+---
+
+## 🧮 Risk Categories
+
+- 🟢 **Low Risk (80–100):** Strong legitimacy indicators
+- 🟡 **Medium Risk (50–79):** Mixed or incomplete signals
+- 🔴 **High Risk (0–49):** Multiple risk indicators detected
+
+---
+
+## 🛠️ Tech Stack
+
+- HTML5
+- CSS3 (Custom Styling + Gradients)
+- Vanilla JavaScript
+- No backend required
+- Fully static deployment (GitHub Pages compatible)
+
+---
+
+## 📁 Project Structure
