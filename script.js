@@ -1,218 +1,128 @@
-document.addEventListener("DOMContentLoaded", () => {
-    initFormProgress();
-    initActiveNavTracking();
-    initCalculationEngine();
-});
+// Array tracking wizard screens sequentially 
+const screenOrderList = [
+    'screen-landing',
+    'screen-metadata',
+    'screen-q1',
+    'screen-q2',
+    'screen-q3',
+    'screen-q4',
+    'screen-q5',
+    'screen-q6',
+    'screen-q7',
+    'screen-q8',
+    'screen-q9',
+    'screen-q10',
+    'output-dashboard'
+];
 
-// Navigation smooth scrolling anchor integration helper
-function scrollToSection(id) {
-    const target = document.getElementById(id);
-    if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
+// Handles state switches between views instantly
+function navigateToScreen(targetScreenId) {
+    // Hide all modular screen components
+    document.querySelectorAll('.dynamic-screen').forEach(screen => {
+        screen.classList.add('hidden');
+    });
+
+    // Make target panel screen layout visible
+    const targetEl = document.getElementById(targetScreenId);
+    if (targetEl) {
+        targetEl.classList.remove('hidden');
     }
-}
 
-// Monitored Progress updates tracking engine
-function initFormProgress() {
-    const form = document.getElementById('riskForm');
-    const inputs = form.querySelectorAll('input[type="radio"]');
-    const progressFill = document.getElementById('progress-fill');
-    const progressText = document.getElementById('progress-text');
+    // Update current step counter numbers in navbar header
+    const progressLabel = document.getElementById('page-progress');
+    const currentIdx = screenOrderList.indexOf(targetScreenId);
 
-    inputs.forEach(input => {
-        input.addEventListener('change', () => {
-            // Manage tile background UI states dynamically 
-            const name = input.name;
-            const parentTiles = form.querySelectorAll(`input[name="${name}"]`);
-            parentTiles.forEach(p => p.parentElement.classList.remove('selected-tile'));
-            if(input.checked) {
-                input.parentElement.classList.add('selected-tile');
-            }
-
-            // Calculate completed answered segments
-            const totalQuestions = 6;
-            const answeredUniqueGroups = new Set();
-            inputs.forEach(i => {
-                if(i.checked) answeredUniqueGroups.add(i.name);
-            });
-
-            const percent = Math.round((answeredUniqueGroups.size / totalQuestions) * 100);
-            progressFill.style.width = `${percent}%`;
-            progressText.innerText = `${percent}%`;
-        });
-    });
-}
-
-// Active Intersection Tracking highlights active links on navigation bar automatically
-function initActiveNavTracking() {
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        let activeId = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 140;
-            if (window.scrollY >= sectionTop) {
-                activeId = section.getAttribute('id');
-            }
-        });
-
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${activeId}`) {
-                link.classList.add('active');
-            }
-        });
-    });
-}
-
-// Computational calculation mapping metrics, array vulnerabilities summaries
-function initCalculationEngine() {
-    const calculateBtn = document.getElementById('calculateBtn');
-    
-    calculateBtn.addEventListener('click', () => {
-        const form = document.getElementById('riskForm');
-        const q1 = form.querySelector('input[name="q1"]:checked');
-        const q2 = form.querySelector('input[name="q2"]:checked');
-        const q3 = form.querySelector('input[name="q3"]:checked');
-        const q4 = form.querySelector('input[name="q4"]:checked');
-        const q5 = form.querySelector('input[name="q5"]:checked');
-        const q6 = form.querySelector('input[name="q6"]:checked');
-
-        // Validation rule validation layer
-        if (!q1 || !q2 || !q3 || !q4 || !q5 || !q6) {
-            alert("⚠️ Please answer all questions before running the risk analysis engine.");
-            return;
-        }
-
-        // Aggregate system value processing
-        const score = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + 
-                      parseInt(q4.value) + parseInt(q5.value) + parseInt(q6.value);
-
-        displayDashboardResults(score, { q1, q2, q3, q4, q5, q6 });
-    });
-}
-
-function displayDashboardResults(score, inputs) {
-    const dashboard = document.getElementById('result-dashboard');
-    const scoreNumber = document.getElementById('scoreNumber');
-    const scoreCircle = document.getElementById('scoreCircle');
-    const badge = document.getElementById('riskLevelBadge');
-    const explanation = document.getElementById('riskExplanation');
-    const redFlagsList = document.getElementById('redFlagsList');
-    const recsList = document.getElementById('recommendationsList');
-
-    // Unhide Dashboard View frame
-    dashboard.classList.remove('hidden');
-
-    // Reset runtime dashboard category state tags
-    dashboard.className = "result-dashboard glass-card animate-up";
-    badge.className = "risk-badge";
-
-    let tier = '';
-    let categoryClass = '';
-    let descriptionText = '';
-    let conicColor = '';
-
-    if (score <= 30) {
-        tier = 'Low Risk';
-        categoryClass = 'low-risk';
-        conicColor = '#10b981';
-        badge.classList.add('badge-low');
-        descriptionText = "This position appears safe. The structural parameters line up closely with verified, compliant institutional hiring profiles. Proceed with normal precautions.";
-    } else if (score <= 60) {
-        tier = 'Medium Risk';
-        categoryClass = 'med-risk';
-        conicColor = '#f59e0b';
-        badge.classList.add('badge-medium');
-        descriptionText = "Caution advised. Several operational metrics fall outside normal verification guidelines. Run secondary checks on structural domain registration and legal headers.";
+    if (currentIdx > 0 && currentIdx < screenOrderList.length - 1) {
+        progressLabel.classList.remove('hidden');
+        progressLabel.innerText = `Step ${currentIdx} of 11`;
     } else {
-        tier = 'High Risk';
-        categoryClass = 'high-risk';
-        conicColor = '#ef4444';
-        badge.classList.add('badge-high');
-        descriptionText = "Critical security alert. The tracking profiles exhibit direct correlations with modern phishing and advance-fee scam models. High likelihood of unauthorized harvesting or spoofing.";
+        progressLabel.classList.add('hidden');
     }
-
-    dashboard.classList.add(categoryClass);
-    badge.innerText = tier;
-    explanation.innerText = descriptionText;
-
-    // Smooth counter animation engine
-    animateScoreCounter(score, scoreNumber, scoreCircle, conicColor);
-
-    // Evaluate structural responses for flag mapping
-    generateContextualFeedback(inputs, redFlagsList, recsList);
-
-    // Scroll to dashboard
-    dashboard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-function animateScoreCounter(targetScore, numberElement, circleElement, color) {
-    let current = 0;
-    const duration = 800; // ms
-    const increment = targetScore / (duration / 16); // ~60fps target
+// Automatically shifts layout scene when an answer pill option gets triggered
+function nextQuestion(currentQuestionIndex) {
+    // Artificial mini-delay so user witnesses selection highlight state transition
+    setTimeout(() => {
+        navigateToScreen(`screen-q${currentQuestionIndex + 1}`);
+    }, 250);
+}
 
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= targetScore) {
-            current = targetScore;
-            clearInterval(timer);
+// Risk Evaluation Logic Aggregator
+function calculateFinalScore(event) {
+    event.preventDefault();
+
+    const rawCompany = document.getElementById('companyName').value.trim();
+    const targetCompany = rawCompany ? rawCompany : "Your Internship Offer";
+
+    let totalPoints = 0;
+    let identifiedFlags = [];
+
+    const evaluationMetrics = [
+        { name: 'q1', check: (val) => val > 0, text: " Demanding upfront charging matrices for registration assets or training kits." },
+        { name: 'q2', check: (val) => val >= 40, text: "Recruitment executed entirely via third-party messaging spaces (WhatsApp/Telegram)." },
+        { name: 'q3', check: (val) => val >= 20, text: "Lacks transparent digital footprints or verifiable corporate domain references." },
+        { name: 'q4', check: (val) => val > 0, text: "Offered immediate role positioning without an evaluation workflow pipeline." },
+        { name: 'q5', check: (val) => val > 0, text: "Missing official formal appointment verification frameworks." },
+        { name: 'q6', check: (val) => val > 0, text: "Aggressive inquiries for confidential personal records prematurely." },
+        { name: 'q7', check: (val) => val > 0, text: "Onboarding conditions look disproportionately generous to be true." },
+        { name: 'q8', check: (val) => val > 0, text: "Imposes strict high-pressure deadline boundaries on candidates." },
+        { name: 'q9', check: (val) => val === 30, text: "Communications routed using generic free platform servers." },
+        { name: 'q10', check: (val) => val > 0, text: "Stipend values are highly inflated above conventional industry averages." }
+    ];
+
+    evaluationMetrics.forEach(metric => {
+        const checkedNode = document.querySelector(`input[name="${metric.name}"]:checked`);
+        if (checkedNode) {
+            const pointValue = parseInt(checkedNode.value);
+            totalPoints += pointValue;
+            if (metric.check(pointValue)) {
+                identifiedFlags.push(metric.text);
+            }
         }
-        const displayVal = Math.floor(current);
-        numberElement.innerText = displayVal;
-        circleElement.style.background = `conic-gradient(${color} ${displayVal * 3.6}deg, rgba(255,255,255,0.05) 0deg)`;
-    }, 16);
+    });
+
+    const standardScore = Math.min(totalPoints, 100);
+
+    // Calculate Risk Tier Badge Attributes
+    let classification = "LOW RISK";
+    let styleClasses = "bg-emerald-500/20 text-emerald-400 border border-emerald-500/30";
+
+    if (standardScore >= 31 && standardScore <= 60) {
+        classification = "MEDIUM RISK";
+        styleClasses = "bg-amber-500/20 text-amber-400 border border-amber-500/30";
+    } else if (standardScore > 60) {
+        classification = "HIGH RISK";
+        styleClasses = "bg-rose-500/20 text-rose-400 border border-rose-500/30";
+    }
+
+    // Set Data Node Inner Content
+    document.getElementById('out-target-headline').innerText = targetCompany;
+    document.getElementById('out-score-label').innerText = `${standardScore}/100`;
+
+    const badgeNode = document.getElementById('out-badge');
+    badgeNode.innerText = classification;
+    badgeNode.className = `text-[10px] uppercase font-bold tracking-widest px-4 py-1.5 rounded-full ${styleClasses}`;
+
+    const listContainer = document.getElementById('out-flags-list');
+    listContainer.innerHTML = "";
+
+    if (identifiedFlags.length === 0) {
+        listContainer.innerHTML = "<li>No operational high-level risk criteria detected inside selection inputs. Proceed with standard due diligence guidelines.</li>";
+    } else {
+        identifiedFlags.forEach(flagDescription => {
+            const itemElement = document.createElement('li');
+            itemElement.innerText = flagDescription;
+            listContainer.appendChild(itemElement);
+        });
+    }
+
+    // Switch View to Output Panel Dashboard Screen View
+    navigateToScreen('output-dashboard');
 }
 
-function generateContextualFeedback(inputs, flagsContainer, recsContainer) {
-    flagsContainer.innerHTML = '';
-    recsContainer.innerHTML = '';
-
-    let flagCount = 0;
-
-    // Rule Evaluations mapping
-    if (parseInt(inputs.q1.value) === 20) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Sourced via unverified random chat software channels (WhatsApp/Telegram).');
-        flagCount++;
-    }
-    if (parseInt(inputs.q2.value) === 25) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Demanding upfront capital/training acquisition investment payments.');
-        flagCount++;
-    } else if (parseInt(inputs.q2.value) === 15) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Imposed suspicious non-standard documentation registration deposits.');
-        flagCount++;
-    }
-    if (parseInt(inputs.q3.value) === 20) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Automatic onboarding devoid of selective skills screening or vetting interviews.');
-        flagCount++;
-    }
-    if (parseInt(inputs.q4.value) === 15) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Utilizing aggressive sales pressure timelines to bypass security reflection.');
-        flagCount++;
-    }
-    if (parseInt(inputs.q5.value) === 10) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Missing verifiable company letterhead validation parameters.');
-        flagCount++;
-    }
-    if (parseInt(inputs.q6.value) === 10) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-xmark text-danger"></i> Unlisted, newly registered, or hidden corporate entity registry data footprint.');
-        flagCount++;
-    }
-
-    if (flagCount === 0) {
-        addListElement(flagsContainer, '<i class="fa-solid fa-circle-check text-success"></i> Excellent. No structural vulnerabilities intercepted.');
-    }
-
-    // Default Actionable safety recommendations pipeline population
-    addListElement(recsContainer, '<i class="fa-solid fa-circle-right"></i> Cross-examine the employer identity on LinkedIn against registered staff arrays.');
-    addListElement(recsContainer, '<i class="fa-solid fa-circle-right"></i> Send an verification inquiry via official corporate email domain.');
-    addListElement(recsContainer, '<i class="fa-solid fa-circle-right"></i> Never submit processing payment credentials or personal background documents.');
-    addListElement(recsContainer, '<i class="fa-solid fa-circle-right"></i> Report unverified or suspicious recruitment accounts directly to placement cells.');
-}
-
-function addListElement(parent, htmlContent) {
-    const li = document.createElement('li');
-    li.innerHTML = htmlContent;
-    parent.appendChild(li);
+// Reset System State back to Entry Point Sequence
+function resetCalculatorFramework() {
+    document.getElementById('riskEngineForm').reset();
+    navigateToScreen('screen-landing');
 }
