@@ -2,6 +2,7 @@
 :root {
     --primary: #3b82f6; /* Electric Cyber Blue */
     --primary-neon: #60a5fa;
+    --primary-hover: #1d4ed8;
     --text-main: #f3f4f6;
     --text-muted: #9ca3af;
     --bg-card: rgba(10, 15, 30, 0.75); /* Deep Glassmorphic Panel Base */
@@ -150,6 +151,7 @@ section {
     transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: none;
+    display: inline-block;
 }
 
 .btn-primary {
@@ -294,6 +296,58 @@ section {
     box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
+/* NEW CONTENT: Text Input Elements Styling */
+.input-details-group {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 40px;
+}
+
+.form-group-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group-text label {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.form-group-text label .required {
+    color: var(--color-crit);
+}
+
+.form-group-text input[type="text"],
+.form-group-text input[type="url"],
+.form-group-text textarea {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-group-text input:focus,
+.form-group-text textarea:focus {
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 12px rgba(96, 165, 250, 0.2);
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.form-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+    margin: 40px 0;
+}
+
 .form-group {
     margin-bottom: 35px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -338,13 +392,85 @@ section {
 }
 
 .radio-label input {
-    margin-top: 6px;
+    margin-top: 4px;
     accent-color: var(--primary-neon);
     width: 18px;
     height: 18px;
+    flex-shrink: 0;
 }
 
-/* Advanced Interactive Processing Output Interface Elements */
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+/* NEW CONTENT: Advanced Dual Column Output Layout Dashboard */
+.result-grid-layout {
+    display: flex;
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.main-assessment-card {
+    flex: 1.4;
+    min-width: 320px;
+}
+
+/* Extra Info Card Styling */
+.extra-info-card {
+    flex: 0.8;
+    min-width: 300px;
+    background: rgba(8, 12, 24, 0.85);
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 40px 30px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 25px 60px rgba(59, 130, 246, 0.1);
+    height: max-content;
+}
+
+.extra-info-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 20px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 12px;
+}
+
+.metrics-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.metrics-table td {
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    font-size: 14px;
+}
+
+.metrics-table tr:last-child td {
+    border-bottom: none;
+}
+
+.metric-val {
+    font-weight: 700;
+    text-align: right;
+    display: block;
+}
+
+/* Status colors within extra dashboard tables */
+.status-green { color: var(--color-low); }
+.status-orange { color: var(--color-high); }
+.status-red { color: var(--color-crit); }
+
+/* Interactive Processing Output Interface Elements */
 .result-section {
     border-top: 1px solid var(--border);
 }
@@ -354,8 +480,6 @@ section {
     border-radius: 20px;
     border: 1px solid rgba(59, 130, 246, 0.3);
     padding: 45px;
-    max-width: 850px;
-    margin: 0 auto;
     backdrop-filter: blur(16px);
     box-shadow: 0 25px 60px rgba(59, 130, 246, 0.1);
 }
@@ -382,6 +506,7 @@ section {
     background: rgba(0, 0, 0, 0.4);
     box-shadow: 0 0 25px rgba(59, 130, 246, 0.2);
     transition: all 0.5s ease;
+    flex-shrink: 0;
 }
 
 #score-num {
@@ -398,15 +523,37 @@ section {
     color: var(--text-muted);
 }
 
+.score-info {
+    flex: 1;
+}
+
 .score-info h3 {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 32px;
+    font-size: 26px;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .score-info p {
     color: var(--text-muted);
+    font-size: 15px;
+}
+
+.explanation-box {
+    margin-bottom: 30px;
+}
+
+.explanation-box h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.explanation-box p {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .flags-box {
@@ -430,6 +577,61 @@ section {
     margin-bottom: 12px;
     font-size: 14px;
     color: #fca5a5;
+}
+
+/* NEW CONTENT: Educational Info Hub (Tips Section) Layout */
+.tips-section {
+    border-top: 1px solid var(--border);
+}
+
+.tips-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.tip-card {
+    flex: 1;
+    min-width: 320px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 35px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+}
+
+.tip-card h4 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.tip-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.tip-card ul li {
+    font-size: 14px;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 20px;
+}
+
+.tip-card ul li::before {
+    content: "•";
+    color: var(--primary-neon);
+    font-size: 20px;
+    position: absolute;
+    left: 0;
+    top: -4px;
+}
+
+.tip-card ul li strong {
+    color: #ffffff;
 }
 
 /* Institutional Level System Disclaimer Box Elements */
@@ -488,5 +690,6 @@ footer {
 @media(max-width: 768px) {
     .hero-text h1 { font-size: 38px; }
     .score-display { flex-direction: column; text-align: center; }
+    .result-grid-layout { flex-direction: column; }
 }
     
