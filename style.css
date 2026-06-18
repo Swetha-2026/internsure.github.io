@@ -1,118 +1,33 @@
+/* Core Custom Setups */
 body {
-    margin: 0;
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: #05060a;
-    color: white;
-    overflow-x: hidden;
+    background-color: #0b0f19;
 }
 
-/* Glow Background */
-.bg-glow {
-    position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(0, 200, 255, 0.15), transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(120, 0, 255, 0.12), transparent 40%);
-    z-index: -1;
+/* Premium Gradient Text Utility */
+.gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    padding: 14px 20px;
-    display: flex;
-    justify-content: space-between;
-    backdrop-filter: blur(20px);
-    background: rgba(0,0,0,0.4);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+/* Custom CSS Fade-in Animation for Results Card */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.logo {
-    font-weight: 800;
-    letter-spacing: 1px;
+.animate-fadeIn {
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
-/* Progress */
-.progress {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.bar {
-    width: 120px;
-    height: 5px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-#progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, #00d4ff, #7c3aed);
-    transition: width 0.4s ease;
-}
-
-/* Layout */
-main {
-    padding-top: 90px;
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-/* Card */
-.card {
-    width: 92%;
-    max-width: 520px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 18px;
-    padding: 20px;
-    backdrop-filter: blur(20px);
-    animation: fade 0.4s ease;
-}
-
-@keyframes fade {
-    from {opacity: 0; transform: translateY(10px);}
-    to {opacity: 1; transform: translateY(0);}
-}
-
-/* Buttons */
-button {
-    width: 100%;
-    padding: 14px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
-}
-
-.primary {
-    background: linear-gradient(90deg,#00d4ff,#7c3aed);
-    color: black;
-}
-
-.option {
-    background: rgba(255,255,255,0.05);
-    color: white;
-    margin: 8px 0;
-    text-align: left;
-}
-
-.option:hover {
-    transform: scale(1.02);
-    background: rgba(255,255,255,0.08);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    font-size: 11px;
-    padding: 20px;
-    opacity: 0.5;
+/* Input Placeholder Tweaks */
+textarea::placeholder {
+    color: #4b5563;
 }
