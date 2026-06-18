@@ -82,59 +82,75 @@
             </div>
 
             <form id="quiz-form" class="quiz-form">
+                
                 <div class="form-group">
-                    <label>1. Originating Communications Routing Channel</label>
+                    <label>1. Initial Contact Method / Communication Channel</label>
                     <div class="radio-options">
                         <label class="radio-label">
-                            <input type="radio" name="q1" value="0" required> Official job board node (LinkedIn Job, Handshake, Enterprise Portal)
+                            <input type="radio" name="q1" value="0" required> LinkedIn message / Official company job portal standard invitation
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q1" value="15"> Unsolicited cold email routing via a generic free host domain (@gmail.com, @outlook.com)
+                            <input type="radio" name="q1" value="0"> Official College Placement Cell verification email
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q1" value="25"> Direct cold message payload on WhatsApp, Telegram, or an anonymous platform instance
+                            <input type="radio" name="q1" value="15"> Random generic host domain or personal email address (@gmail, @outlook)
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="25"> Unsolicited text broadcast or direct message on WhatsApp, Telegram, or Instagram DM
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>2. Capital Allocation Requirements / Advanced Requests</label>
+                    <label>2. Associated Monetary Demands / Onboarding Charges</label>
                     <div class="radio-options">
                         <label class="radio-label">
-                            <input type="radio" name="q2" value="0"> Zero investment demands or upfront tool requisitions mentioned
+                            <input type="radio" name="q2" value="0" required> Safe: Fully transparent process — No financial transaction requested
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q2" value="20"> Mandatory initial premium certificate generation or external specialized learning fees
+                            <input type="radio" name="q2" value="20"> Mandatory training enrollment fee or paid structural upgrade classes
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q2" value="40"> Outright monetary demand labeled as a security deposit, documentation fee, or kit procurement
+                            <input type="radio" name="q2" value="25"> Upfront institutional registration fee or strict laptop/security hardware deposit
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q2" value="35"> Explicit requirement with a written verbal promise of "100% full refund later"
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>3. Interviewing Complexity and Evaluation Pipeline</label>
+                    <label>3. Application Evaluation and Interview Complexity</label>
                     <div class="radio-options">
                         <label class="radio-label">
-                            <input type="radio" name="q3" value="0"> High-touch multi-tier verification (Technical reviews, dynamic case study, live video check)
+                            <input type="radio" name="q3" value="0" required> Multi-stage evaluation featuring technical challenges, code reviews, or live video rounds
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q3" value="15"> Shallow review consisting strictly of standard template text questionnaires without conversational depth
+                            <input type="radio" name="q3" value="0"> Standard evaluation protocol consisting of a custom assignment followed by an HR meeting
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q3" value="30"> Immediate acceptance notification delivered directly without prior submission analysis or verification rounds
+                            <input type="radio" name="q3" value="20"> Static text input verification via Google Forms with zero physical or interactive interviews
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q3" value="30"> Direct transmission of an immediate "Instant Selection Notice" right after initial contact
                         </label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label>4. Urgency Optimization Framework</label>
+                    <label>4. Timeframe and Urgency Optimization Framework</label>
                     <div class="radio-options">
                         <label class="radio-label">
-                            <input type="radio" name="q4" value="0"> Normal operational timeline offered to sign and review employment structures
+                            <input type="radio" name="q4" value="0" required> Normal corporate operational pace allowing sufficient space to read and sign agreements
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q4" value="20"> High-pressure urgency applied, asserting the opportunity burns out or transitions within extreme hours
+                            <input type="radio" name="q4" value="10"> High-velocity push requiring a mandatory selection reply strictly inside 24 hours
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="20"> Aggressive ultimatum declaring you must "Pay immediately right now or forfeit the slot"
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="20"> Artificial scale warnings stating "Extremely limited slots available, hurry to register"
                         </label>
                     </div>
                 </div>
@@ -143,10 +159,31 @@
                     <label>5. Quality and Legal Validation of Onboarding Documentation</label>
                     <div class="radio-options">
                         <label class="radio-label">
-                            <input type="radio" name="q5" value="0"> Standardized professional corporate contract displaying exact registration stamps and support listings
+                            <input type="radio" name="q5" value="0" required> Corporate authenticated PDF routing directly from an authorized company email system
                         </label>
                         <label class="radio-label">
-                            <input type="radio" name="q5" value="20"> Fragmented layout design lacking structural legal citations, clean contact routing, or physical registry verification
+                            <input type="radio" name="q5" value="0"> Standard formatted document featuring active company identification tags and physical registry entries
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="20"> Offer text blocks transmitted exclusively as a casual mobile chat message over WhatsApp
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="25"> Fragmented layout completely lacking company contact links, corporate branding, or using unverified templates
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>6. External Digital Footprint Verification Status</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="0" required> Fully active business website corroborated by matching institutional employees on LinkedIn
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="15"> Missing website records or zero professional organizational listings found across digital indexes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="30"> Identified clone template or lookalike domain mimicry designed to look like a separate legitimate business
                         </label>
                     </div>
                 </div>
@@ -166,7 +203,7 @@
             <div class="result-card">
                 <div class="score-display">
                     <div class="score-circle">
-                        <span id="score-num">0</span>
+                        <span id="score-num">0%</span>
                         <div class="score-sub">Anomaly Index</div>
                     </div>
                     <div class="score-info">
