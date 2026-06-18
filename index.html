@@ -3,170 +3,242 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Internsure AI – Internship Verification & Risk Assessment System</title>
+    <title>InternSure — Premium Internship Fraud Risk Analyzer</title>
+    <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Internsure AI</div>
-        <ul class="nav-links">
-            <li><a href="#about">About System</a></li>
-            <li><a href="#verify">Analyze Risks</a></li>
-            <li><a href="#insights">Common Scams</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero-section" id="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Assess Systemic Risks & <span>Avoid Fake Opportunities</span></h1>
-            <p class="hero-subtitle"><span id="typewriter"></span><span class="cursor"></span></p>
-            <button class="btn-cta" onclick="document.getElementById('verify').scrollIntoView();">Check Internship Risk</button>
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo">Intern<span class="neon-text">Sure</span></a>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#about">About System</a>
+                <a href="#assessment">Risk Engine</a>
+                <a href="#disclaimer">Disclaimer</a>
+            </nav>
         </div>
-    </section>
+    </header>
 
-    <section class="container" id="about">
-        <h2 class="section-title">Algorithmic Risk Metrics</h2>
-        <p class="section-subtitle">Internsure AI breaks down systemic signals, application integrity points, and organizational parameters to evaluate exposure matrices before submission.</p>
-        
-        <div class="grid-3">
-            <div class="card">
-                <span class="step-num">01</span>
-                <h3>Provide Indicators</h3>
-                <p>Input critical corporate details such as infrastructure verification addresses, domain metrics, and structural requests.</p>
-            </div>
-            <div class="card">
-                <span class="step-num">02</span>
-                <h3>Heuristic Modeling</h3>
-                <p>The rules-based parser checks systemic anomalies, functional attributes, registration fees, and domain alignment strings.</p>
-            </div>
-            <div class="card">
-                <span class="step-num">03</span>
-                <h3>Safety Scoring</h3>
-                <p>Obtain an actionable evaluation rating complete with transparent verification flags categorized dynamically.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container" id="verify">
-        <h2 class="section-title">Opportunity Assessment Hub</h2>
-        <p class="section-subtitle" style="margin-bottom: 3rem;">Fill in the profile details below to verify tracking vectors and generate an instantaneous analytics report.</p>
-        
-        <div class="workspace-grid">
-            <div class="card">
-                <form id="riskForm">
-                    <div class="form-group">
-                        <label for="companyName">Company Name *</label>
-                        <input type="text" id="companyName" required placeholder="e.g., TechNova Solutions">
-                    </div>
-                    <div class="form-group">
-                        <label for="websiteUrl">Official Website URL</label>
-                        <input type="url" id="websiteUrl" placeholder="e.g., https://technova.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="hrEmail">HR Email ID *</label>
-                        <input type="email" id="hrEmail" required placeholder="e.g., careers@technova.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="linkedinUrl">LinkedIn Corporate URL</label>
-                        <input type="url" id="linkedinUrl" placeholder="e.g., linkedin.com/company/... (optional)">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="jobTitle">Internship Track Title *</label>
-                        <input type="text" id="jobTitle" required placeholder="e.g., Frontend Developer Intern">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="regFee">Is a Security Deposit / Registration Fee Required? *</label>
-                        <select id="regFee" required>
-                            <option value="">-- Make Selection --</option>
-                            <option value="no">No, entirely performance or unpaid tracking matrix</option>
-                            <option value="yes">Yes, mandatory upfront application payment</option>
-                        </select>
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="comments">Additional Context/Observations</label>
-                        <textarea id="comments" placeholder="Describe the application process, interview style, or onboarding demands..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-submit">Execute Integrity Analysis</button>
-                </form>
-            </div>
-
-            <div class="dashboard-container" id="dashboard">
-                <div class="dashboard-empty" id="dashEmpty">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                    </svg>
-                    <h3>Awaiting Assessment Parameters</h3>
-                    <p>Provide validation signals in the primary data engine form to initiate calculation rulesets.</p>
+    <section id="home" class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">🤖 Automated Fraud Analysis Protocol</span>
+                <h1>Scan the Internship.<br><span class="accent">Expose the Trap.</span></h1>
+                <p>An advanced algorithmic heuristics tool built to isolate patterns matching known tuition scams, identity harvesting rings, and non-compliant placement traps before you expose your data or finances.</p>
+                <div class="cta-buttons">
+                    <a href="#assessment" class="btn btn-primary">Initialize Risk Engine</a>
+                    <a href="#about" class="btn btn-secondary">System Specifications</a>
                 </div>
-
-                <div class="dashboard-active" id="dashActive">
-                    <div class="status-badge" id="riskBadge">Low Risk</div>
-                    
-                    <div class="meter-container">
-                        <div class="score-circle" id="scoreCircle">
-                            <span class="score-text" id="scoreText">0</span>
-                        </div>
-                        <div>
-                            <h3 id="resCompanyTitle">Company Context</h3>
-                            <p style="color: var(--text-muted); font-size: 0.9rem;" id="resJobTitle">Track Role</p>
-                        </div>
-                    </div>
-
-                    <div class="report-section">
-                        <h4>Audit Verification Breakdown</h4>
-                        <ul class="reasons-list" id="reasonsLog">
-                            </ul>
-                    </div>
+                <div class="hero-bullets">
+                    <span>⚡ Instant Heuristics</span>
+                    <span>🔒 Complete Local Privacy</span>
+                    <span>🎯 Matrix Evaluation</span>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="glow-orb"></div>
+                <div class="card-stack">
+                    <div class="visual-card critical-risk">🚨 Critical Scam Pattern</div>
+                    <div class="visual-card high-risk">⚠️ High Risk Structure</div>
+                    <div class="visual-card avg-risk">⚡ Average Threat Level</div>
+                    <div class="visual-card low-risk">🛡️ Verified Operations</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="container" id="insights">
-        <h2 class="section-title">Common Exploitation Vectors</h2>
-        <p class="section-subtitle">Real-world fraudulent tracking matrices consistently mirror a finite cluster of red flags.</p>
-        
-        <div class="scam-grid">
-            <div class="scam-card">
-                <h3>⚠️ Mandatory Capital Demands</h3>
-                <p>Authentic platforms offer compensation models. Upfront platform administration, certification, or kit fees are classic entry exploits.</p>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">System Metrics</span>
+                <h2>Heuristic Analytical Parameters</h2>
+                <p>InternSure operates by running student-provided job offer indicators against cross-referenced behavioral patterns seen across standardized scam formats.</p>
             </div>
-            <div class="scam-card">
-                <h3>💬 Decentralized Chat Pipeline</h3>
-                <p>Hiring sequences confined strictly to platforms like WhatsApp or Telegram lack verified corporate infrastructure controls.</p>
-            </div>
-            <div class="scam-card">
-                <h3>🌐 Phantom Domain Footprint</h3>
-                <p>Absence of a verifiable corporate landing page, or tracking via lookalike addresses, signals operational evasion.</p>
-            </div>
-            <div class="scam-card">
-                <h3>⚡ Zero-Friction Selection</h3>
-                <p>Offers distributed immediately without structured assessment stages are utilized to mass-onboard targeted populations for data farming.</p>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Behavioral Modeling</h3>
+                    <p>Scammers rely heavily on operational shortcuts. We parse structural communication paths, rapid response velocity, and structural validation gaps to predict validity models safely.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Zero-Data Harvesting</h3>
+                    <p>This terminal processes compliance tracking variables explicitly on your machine. No submitted parameters, document text descriptions, or answers are transmitted or saved globally.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="container">
-        <div class="disclaimer-box">
-            <h3>Regulatory & Functional Disclaimer</h3>
-            <p>This platform delivers a preliminary calculation vector based exclusively on user-supplied configuration input parameters and rule-based heuristic patterns. It does not certify, guarantee, or establish structural legal integrity, authenticity, or complete non-viability of any specific entity or internship track. Users must perform manual, empirical, external due diligence before processing documents or capital investments.</p>
+    <section id="assessment" class="assessment">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Risk Engine Terminal</span>
+                <h2>Input Offer Specifications</h2>
+                <p>Provide exact matching conditions surrounding the onboarding sequence to calculate relative security anomalies.</p>
+            </div>
+
+            <form id="quiz-form" class="quiz-form">
+                
+                <div class="form-group">
+                    <label>1. Initial Contact Method / Communication Channel</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="0" required> LinkedIn message / Official company job portal standard invitation
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="0"> Official College Placement Cell verification email
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="15"> Random generic host domain or personal email address (@gmail, @outlook)
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q1" value="25"> Unsolicited text broadcast or direct message on WhatsApp, Telegram, or Instagram DM
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Associated Monetary Demands / Onboarding Charges</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q2" value="0" required> Safe: Fully transparent process — No financial transaction requested
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q2" value="20"> Mandatory training enrollment fee or paid structural upgrade classes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q2" value="25"> Upfront institutional registration fee or strict laptop/security hardware deposit
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q2" value="35"> Explicit requirement with a written verbal promise of "100% full refund later"
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Application Evaluation and Interview Complexity</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q3" value="0" required> Multi-stage evaluation featuring technical challenges, code reviews, or live video rounds
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q3" value="0"> Standard evaluation protocol consisting of a custom assignment followed by an HR meeting
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q3" value="20"> Static text input verification via Google Forms with zero physical or interactive interviews
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q3" value="30"> Direct transmission of an immediate "Instant Selection Notice" right after initial contact
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Timeframe and Urgency Optimization Framework</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="0" required> Normal corporate operational pace allowing sufficient space to read and sign agreements
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="10"> High-velocity push requiring a mandatory selection reply strictly inside 24 hours
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="20"> Aggressive ultimatum declaring you must "Pay immediately right now or forfeit the slot"
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q4" value="20"> Artificial scale warnings stating "Extremely limited slots available, hurry to register"
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>5. Quality and Legal Validation of Onboarding Documentation</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="0" required> Corporate authenticated PDF routing directly from an authorized company email system
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="0"> Standard formatted document featuring active company identification tags and physical registry entries
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="20"> Offer text blocks transmitted exclusively as a casual mobile chat message over WhatsApp
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q5" value="25"> Fragmented layout completely lacking company contact links, corporate branding, or using unverified templates
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>6. External Digital Footprint Verification Status</label>
+                    <div class="radio-options">
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="0" required> Fully active business website corroborated by matching institutional employees on LinkedIn
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="15"> Missing website records or zero professional organizational listings found across digital indexes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="q6" value="30"> Identified clone template or lookalike domain mimicry designed to look like a separate legitimate business
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary submit-btn">Compute Heuristic Diagnostics</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="result" class="result-section hidden">
+        <div class="container">
+            <div class="section-title">
+                <span class="sub-title">Diagnostics Terminal</span>
+                <h2>Calculated Risk Analysis Profile</h2>
+            </div>
+
+            <div class="result-card">
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="score-num">0%</span>
+                        <div class="score-sub">Anomaly Index</div>
+                    </div>
+                    <div class="score-info">
+                        <h3 id="risk-level">—</h3>
+                        <p id="risk-desc"></p>
+                    </div>
+                </div>
+
+                <div class="report-details">
+                    <div class="flags-box">
+                        <h3>Anomalous Indicators Extracted</h3>
+                        <div id="red-flags-list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="disclaimer" class="disclaimer-section">
+        <div class="container">
+            <div class="disclaimer-box">
+                <span class="warning-tag">Operational Legal Disclaimer</span>
+                <p>InternSure is a purely informational assessment infrastructure. This evaluation tool derives logic strictly from matching input patterns supplied by individual configuration records against common fraud architectures. This application does not structurally or officially track corporate legal logs, coordinate communication vectors with registered organizations, or validate explicit entity legitimacy. Computed scores do not represent authoritative legal, corporate employment clearance, or occupational advice. Users are fully responsible for executing extensive independent corporate investigation protocols before transmitting data payloads or executing fund transfers.</p>
+            </div>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 Internsure AI System. Maintained as an open portfolio sandbox environment.</p>
-            <div class="footer-links">
-                <a href="#">Portfolio Gateway</a>
-                <a href="#">Repository Node</a>
-            </div>
+        <div class="container footer-content">
+            <div class="footer-logo">Intern<span class="neon-text">Sure</span></div>
+            <p class="footer-text">© 2026 InternSure Core — Academic Compliance Research Architecture Protocol.</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
+            
